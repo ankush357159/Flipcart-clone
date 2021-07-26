@@ -10,9 +10,6 @@ import SearchBar from "./SearchBar";
 import HeaderButtons from "./HeaderButtons";
 import { Link } from "react-router-dom";
 
-
-
-
 const useStyles = makeStyles({
 	header: {
 		backgroundColor: "#2874f0",
