@@ -7,9 +7,7 @@ import {
 } from "@material-ui/core";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { products } from "../../constants/data";
 import Countdown from "react-countdown";
-import green from "@material-ui/core/colors/green";
 
 const responsive = {
 	superLargeDesktop: {
@@ -70,7 +68,7 @@ const useStyles = makeStyles({
 		padding: "35px 10px",
 	},
 });
-const Slide = ({ timer, title }) => {
+const Slide = ({ timer, title, products }) => {
 	const classes = useStyles();
 	const timerURL =
 		"https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/timer_a73398.svg";
