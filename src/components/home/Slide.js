@@ -8,6 +8,7 @@ import {
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Countdown from "react-countdown";
+import { Link } from "react-router-dom";
 
 const responsive = {
 	superLargeDesktop: {
@@ -111,27 +112,29 @@ const Slide = ({ timer, title, products }) => {
 				containerClass='carousel-container'
 			>
 				{products.map((product) => (
-					<Box textAlign='center' key={product.id} className={classes.wrapper}>
-						<img src={product.url} className={classes.image} />
-						<Typography
-							className={classes.text}
-							style={{ fontWeight: 600, color: "#212121" }}
-						>
-							{product.title.shortTitle}
-						</Typography>
-						<Typography
-							className={classes.text}
-							style={{ fontWeight: 600, color: "green", opacity: "0.7" }}
-						>
-							{product.discount}
-						</Typography>
-						<Typography
-							className={classes.text}
-							style={{ color: "#212121", opacity: ".6" }}
-						>
-							{product.tagline}
-						</Typography>
-					</Box>
+					<Link to={`product/${product.id} `}>
+						<Box textAlign='center' className={classes.wrapper}>
+							<img src={product.url} className={classes.image} alt='' />
+							<Typography
+								className={classes.text}
+								style={{ fontWeight: 600, color: "#212121" }}
+							>
+								{product.title.shortTitle}
+							</Typography>
+							<Typography
+								className={classes.text}
+								style={{ fontWeight: 600, color: "green", opacity: "0.7" }}
+							>
+								{product.discount}
+							</Typography>
+							<Typography
+								className={classes.text}
+								style={{ color: "#212121", opacity: ".6" }}
+							>
+								{product.tagline}
+							</Typography>
+						</Box>
+					</Link>
 				))}
 			</Carousel>
 		</Box>
