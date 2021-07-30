@@ -2,6 +2,7 @@ import { Badge, Box, Button, makeStyles, Typography } from "@material-ui/core";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 //components
 import LoginDialog from "../login/Login";
@@ -14,31 +15,32 @@ const useStyles = makeStyles({
 		color: "#2874f0",
 		textTransform: "none",
 		fontSize: 16,
-		fontWeight: 500,
+		fontWeight: 600,
 		borderRadius: 2,
-		padding: "0 30px",
+		padding: "5px 30px",
 		boxShadow: "none",
 	},
 	wrapper: {
-		margin: "0 8% 0 auto",
+		margin: "0 5% 0 auto",
 		display: "flex",
 		"& > * ": {
 			marginRight: 50,
-			fontSize: 20,
+			fontSize: 12,
 			textDecoration: "none",
 			color: "#fff",
-		},
-		alignItems: "center",
-
-		container: {
-			display: "flex",
+			alignItems: "center",
 		},
 	},
+	container: {
+		display: "flex",
+	},	
 });
 const HeaderButtons = () => {
 	const classes = useStyles();
 	const [open, setOpen] = useState(false);
 	const { account, setAccount } = useContext(LoginContext);
+
+	const { cartItems } = useSelector((state) => state.cart);
 
 	const openLoginDialog = () => {
 		setOpen(true);
@@ -63,10 +65,10 @@ const HeaderButtons = () => {
 				<Typography style={{ marginTop: 5 }}>More</Typography>
 			</Link>
 			<Link to='/cart' className={classes.container}>
-				<Badge badgeContent={3} color='secondary'>
+				<Badge badgeContent={cartItems?.length} color='secondary'>
 					<ShoppingCartIcon />
-					<Typography style={{ marginLeft: 10 }}>Cart</Typography>
 				</Badge>
+				<Typography style={{ marginLeft: 10 }}>Cart</Typography>
 			</Link>
 			<LoginDialog open={open} setOpen={setOpen} setAccount={setAccount} />
 		</Box>

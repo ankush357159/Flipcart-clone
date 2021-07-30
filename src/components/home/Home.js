@@ -46,7 +46,7 @@ const Home = () => {
 						<Slide timer={true} title='Deal of the day' products={products} />
 					</Box>
 					<Box className={classes.rightWrapper}>
-						<img src={adURL} style={{ width: 230 }} />
+						<img src={adURL} alt='' style={{ width: 230 }} />
 					</Box>
 				</Box>
 			</Box>
